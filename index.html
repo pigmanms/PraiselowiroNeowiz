@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>목표 지점 방위각 나침반</title>
+  <link rel="stylesheet" href="main.css" />
+  <script defer src="main.js"></script>
+</head>
+<body>
+  <header class="app-header">
+    <h1>목표 지점 방위각 나침반</h1>
+    <p class="subtitle">
+      현재 위치(GPS)와 나침반 센서를 사용해 네오위즈 / lowiro 본사 방향으로
+      몇 도를 향해야 하는지 계산합니다.
+    </p>
+    <div class="actions">
+      <button id="startBtn" class="btn primary">시작 (권한 요청)</button>
+      <button id="stopBtn" class="btn">정지</button>
+    </div>
+    <p class="note">
+      ⚠️ 모바일에서 <strong>HTTPS</strong>로 열어야 위치/나침반 센서가 동작합니다.
+      iOS는 ‘나침반/동작&방향’ 권한을 추가로 허용해야 합니다.
+    </p>
+  </header>
+
+  <main class="container">
+    <section class="panel">
+      <h2>현재 위치</h2>
+      <div class="grid">
+        <div>
+          <div class="label">위도</div>
+          <div id="lat" class="value">—</div>
+        </div>
+        <div>
+          <div class="label">경도</div>
+          <div id="lon" class="value">—</div>
+        </div>
+        <div>
+          <div class="label">정확도</div>
+          <div id="acc" class="value">—</div>
+        </div>
+        <div>
+          <div class="label">업데이트</div>
+          <div id="ts" class="value">—</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>기기 나침반</h2>
+      <div class="compass-wrap">
+        <div class="compass">
+          <div class="compass-needle" id="deviceNeedle" aria-hidden="true"></div>
+          <div class="compass-n">N</div>
+        </div>
+        <div class="compass-info">
+          <div><span class="label">현재 방위(진북 기준 추정)</span>
+            <span id="deviceHeading" class="value">—</span></div>
+          <div class="small text-dim" id="headingSource">센서 상태: —</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>목표 지점</h2>
+
+      <article class="card" id="t1">
+        <h3>네오위즈 (37.399979, 127.104181)</h3>
+        <div class="target">
+          <div class="arrow-wrap">
+            <div class="arrow" id="arrow1" aria-hidden="true"></div>
+          </div>
+          <div class="info">
+            <div><span class="label">거리</span> <span id="dist1" class="value">—</span></div>
+            <div><span class="label">진북 기준 방위각</span> <span id="bear1" class="value">—</span></div>
+            <div><span class="label">기준 대비 회전</span> <span id="turn1" class="value">—</span></div>
+            <div class="small text-dim">
+              기기 나침반이 없으면 “진북 기준 방위각” 값을 일반 나침반 앱에 맞추세요.
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" id="t2">
+        <h3>lowiro 본사 (51.5172646, -0.1398826)</h3>
+        <div class="target">
+          <div class="arrow-wrap">
+            <div class="arrow" id="arrow2" aria-hidden="true"></div>
+          </div>
+          <div class="info">
+            <div><span class="label">거리</span> <span id="dist2" class="value">—</span></div>
+            <div><span class="label">진북 기준 방위각</span> <span id="bear2" class="value">—</span></div>
+            <div><span class="label">기준 대비 회전</span> <span id="turn2" class="value">—</span></div>
+            <div class="small text-dim">
+              기기 나침반이 없으면 “진북 기준 방위각” 값을 일반 나침반 앱에 맞추세요.
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <div>© 2025 방위각 계산 도우미 — 오차가 있을 수 있으니 안전에 유의하세요.</div>
+  </footer>
+</body>
+</html>
